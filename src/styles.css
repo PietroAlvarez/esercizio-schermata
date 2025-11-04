@@ -23,41 +23,138 @@ body {
   min-height: 100vh;
 }
 
+/* Sección del header con título y botón */
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
 .header {
   font-size: 2rem;
   font-weight: 700;
-  margin: 0 0 2rem 0;
+  margin: 0;
   color: #111827;
   letter-spacing: -0.025em;
 }
 
-/* Estilos para la sección del elenco con fondo blanco */
-.agency-table-section {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  margin-top: 1rem;
+/* Estilos para el botón de insertar */
+.insert-button {
+  background: #3b82f6 !important;
+  border-color: #3b82f6 !important;
+  color: white !important;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
 }
 
-/* Asegurar que PrimeNG Table tenga fondo transparente para mostrar el blanco */
+.insert-button:hover {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.insert-button:active {
+  transform: translateY(0);
+}
+
+/* Estilos específicos para PrimeNG button */
+::ng-deep .insert-button.p-button {
+  background: #3b82f6 !important;
+  border-color: #3b82f6 !important;
+  color: white !important;
+}
+
+::ng-deep .insert-button.p-button:hover {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+}
+
+::ng-deep .insert-button.p-button:focus {
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2) !important;
+}
+
+/* Estilos para la sección de filtros */
+::ng-deep .p-datatable .p-datatable-header {
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.filters {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  margin-bottom: 16px;
+}
+
+/* Estilos para la tabla que coincidan con la imagen de referencia */
 ::ng-deep .p-datatable {
-  background: transparent !important;
+  background: #ffffff !important;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
 ::ng-deep .p-datatable .p-datatable-wrapper {
-  background: transparent !important;
+  background: #ffffff !important;
 }
 
 ::ng-deep .p-datatable .p-datatable-thead > tr > th {
-  background: #f8f9fa !important;
+  background: #f9fafb !important;
   border-color: #e5e7eb !important;
+  color: #374151 !important;
+  font-weight: 600;
+  padding: 12px 16px;
 }
 
 ::ng-deep .p-datatable .p-datatable-tbody > tr {
   background: #ffffff !important;
+  border-color: #f3f4f6 !important;
 }
 
-::ng-deep .p-datatable .p-datatable-tbody > tr:nth-child(even) {
-  background: #fafbfc !important;
+::ng-deep .p-datatable .p-datatable-tbody > tr:hover {
+  background: #f9fafb !important;
+}
+
+/* Estilos para los grupos de filtros */
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filter-label {
+  font-weight: 600;
+  color: #374151;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+/* Mejorar el aspecto de los inputs en los filtros */
+::ng-deep .filters .p-inputtext,
+::ng-deep .filters .p-datepicker input,
+::ng-deep .filters .p-select {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 8px 12px;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+::ng-deep .filters .p-inputtext:focus,
+::ng-deep .filters .p-datepicker input:focus,
+::ng-deep .filters .p-select:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  outline: none;
 }

@@ -1,8 +1,17 @@
 <div class="container">
-  <div class="header">{{ titolo }}</div>
+  <div class="header-section">
+    <div class="header">{{ titolo }}</div>
+    <button
+      pButton
+      label="Inserire nuova agenzia"
+      icon="pi pi-plus"
+      severity="primary"
+      class="insert-button"
+      (click)="apriDialogInserisci()"
+    ></button>
+  </div>
 
-  <div class="agency-table-section">
-    <p-table
+  <p-table
     [value]="agenzieFiltrate"
     [tableStyle]="{ 'min-width': '64rem' }"
     [paginator]="true"
@@ -114,17 +123,6 @@
       </tr>
     </ng-template>
   </p-table>
-  </div>
-
-  <div style="margin-top: 1rem">
-    <button
-      pButton
-      label="Inserisci"
-      icon="pi pi-plus"
-      severity="primary"
-      (click)="apriDialogInserisci()"
-    ></button>
-  </div>
 
   <p-dialog
     [(visible)]="dialogVisibile"
