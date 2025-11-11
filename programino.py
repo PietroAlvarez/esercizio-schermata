@@ -1,11 +1,18 @@
-#Programma per consultare i numeri primi fino 1000
+# Programma per verificare se un numero è primo
 
-numeri_primi = []
-for num in range(2, 1001):
+numero = int(input("Inserisci un numero: "))
+
+# Verifica se il numero è primo
+if numero < 2:
+    print(f"{numero} non è primo")
+else:
     is_primo = True
-    for i in range(2, int(num**0.5) + 1):
-        if num % i == 0:
+    for i in range(2, int(numero**0.5) + 1):
+        if numero % i == 0:
             is_primo = False
             break
+    
     if is_primo:
-        numeri_primi.append(num)
+        print(f"{numero} è primo!")
+    else:
+        print(f"{numero} non è primo")
