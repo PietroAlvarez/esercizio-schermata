@@ -141,6 +141,24 @@ body {
   margin-bottom: 4px;
 }
 
+/* Botón para consultar primos: manteniendo estética */
+.consult-primes-button {
+  color: #1f2937 !important;
+  border-color: #e5e7eb !important;
+  background: transparent !important;
+  padding: 10px 16px;
+  border-radius: 8px;
+}
+
+::ng-deep .consult-primes-button.p-button:hover {
+  background: rgba(59, 130, 246, 0.06) !important;
+}
+
+/* Dialog primes - keep it clean */
+.primes-dialog .form-group { margin-bottom: 0.75rem; }
+.primes-dialog h4 { margin: 0.4rem 0; font-size: 0.95rem; color: #374151; }
+
+
 /* Mejorar el aspecto de los inputs en los filtros */
 ::ng-deep .filters .p-inputtext,
 ::ng-deep .filters .p-datepicker input,

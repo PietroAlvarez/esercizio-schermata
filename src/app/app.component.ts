@@ -53,6 +53,12 @@ export class AppComponent {
   agenziaInModifica: Agenzia | null = null;
   agenziaOriginale: Agenzia | null = null;
   dialogInserisciVisibile = false;
+  // Dialog per numeri primi
+  dialogPrimiVisibile = false;
+  numeroDaVerificar: number | null = null;
+  esitoPrimo: string | null = null;
+  primiFino1000: number[] = [];
+  primiFino1000Rows: number[][] = [];
   erroreCodiceModifica = false;
   messaggioErroreModifica = "";
 
@@ -302,5 +308,55 @@ export class AppComponent {
   chiudiDialogInserisci() {
     this.dialogInserisciVisibile = false;
     this.nuovaAgenzia = this.inizializzaNuovaAgenzia();
+  }
+
+  // ---- Funzioni per il dialogo dei numeri primi ----
+  apriDialogPrimi() {
+    this.dialogPrimiVisibile = true;
+    this.numeroDaVerificar = null;
+    this.esitoPrimo = null;
+    // non calcoliamo subito la lista per risparmiare memoria; calcoliamo solo su richiesta
+    this.primiFino1000 = [];
+    this.primiFino1000Rows = [];
+  }
+
+  controllaPrimo() {
+    if (this.numeroDaVerificar == null) {
+      this.esitoPrimo = "Inserta un número para verificar";
+      return;
+    }
+    const n = Math.floor(this.numeroDaVerificar);
+    const primo = this.isPrime(n);
+    this.esitoPrimo = primo ? `${n} es primo!` : `${n} no es primo`;
+  }
+
+  mostraTuttiPrimi() {
+    if (!this.primiFino1000 || this.primiFino1000.length === 0) {
+      this.primiFino1000 = this.calcolaPrimiFino1000();
+      // crea righe di 10 numeri per visualizzare nella UI
+      this.primiFino1000Rows = [];
+      for (let i = 0; i < this.primiFino1000.length; i += 10) {
+        this.primiFino1000Rows.push(this.primiFino1000.slice(i, i + 10));
+      }
+    }
+  }
+
+  calcolaPrimiFino1000(): number[] {
+    const res: number[] = [];
+    for (let num = 2; num <= 1000; num++) {
+      if (this.isPrime(num)) res.push(num);
+    }
+    return res;
+  }
+
+  isPrime(n: number): boolean {
+    if (n < 2) return false;
+    if (n === 2) return true;
+    if (n % 2 === 0) return false;
+    const r = Math.floor(Math.sqrt(n));
+    for (let i = 3; i <= r; i += 2) {
+      if (n % i === 0) return false;
+    }
+    return true;
   }
 }

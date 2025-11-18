@@ -9,6 +9,13 @@
       class="insert-button"
       (click)="apriDialogInserisci()"
     ></button>
+    <button
+      pButton
+      label="Consultar números primos"
+      icon="pi pi-search"
+      class="consult-primes-button p-button-outlined"
+      (click)="apriDialogPrimi()"
+    ></button>
   </div>
 
   <p-table
@@ -123,6 +130,37 @@
       </tr>
     </ng-template>
   </p-table>
+
+  <!-- Dialog per consultare numeri primi -->
+  <p-dialog
+    [(visible)]="dialogPrimiVisibile"
+    [modal]="true"
+    [draggable]="false"
+    [resizable]="false"
+    [style]="{ width: '36rem' }"
+    header="Consultar números primos"
+  >
+    <div class="primes-dialog">
+      <div class="form-group">
+        <label class="form-label">Número a verificar</label>
+        <input pInputText type="number" [(ngModel)]="numeroDaVerificar" class="form-input" />
+      </div>
+
+      <div style="display:flex; gap:0.75rem; margin-top:0.5rem;">
+        <button pButton label="Comprobar" (click)="controllaPrimo()" class="p-button-sm p-button-primary"></button>
+        <button pButton label="Mostrar primos hasta 1000" (click)="mostraTuttiPrimi()" class="p-button-sm p-button-secondary"></button>
+      </div>
+
+      <div *ngIf="esitoPrimo !== null" style="margin-top:1rem; font-weight:600">{{ esitoPrimo }}</div>
+
+      <div *ngIf="primiFino1000?.length" style="margin-top:1rem; max-height:200px; overflow:auto;">
+        <h4>Primos (2..1000)</h4>
+        <div *ngFor="let row of primiFino1000Rows">
+          <div>{{ row.join(' ') }}</div>
+        </div>
+      </div>
+    </div>
+  </p-dialog>
 
   <p-dialog
     [(visible)]="dialogVisibile"
